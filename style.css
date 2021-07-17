@@ -1,0 +1,19 @@
+#heading {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 60px;
+}
+
+.playground {
+  display: flex;
+  flex-direction: row;
+}
+
+#counter-table {
+  display: flex;
+  flex-direction: row;
+}
+
+#counter {
+  margin-left: 10px;
+}
