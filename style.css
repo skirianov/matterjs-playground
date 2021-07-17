@@ -1,7 +1,7 @@
 #heading {
   text-align: center;
-  margin-top: 20px;
-  font-size: 60px;
+  margin-top: 10px;
+  font-size: 40px;
 }
 
 .playground {
@@ -13,8 +13,8 @@
 .buttons {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  margin: 100px;
+  width: 240px;
+  margin: 60px;
 }
 
 .buttons button {
@@ -38,7 +38,6 @@
 
 #input {
   width: 350px;
-  height: 50px;
 }
 
 .input {

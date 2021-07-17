@@ -11,8 +11,8 @@ const render = Render.create({
   element: document.getElementById('container'),
   engine: engine,
   options: {
-    height: 1000,
-    width: 1000,
+    height: 900,
+    width: 900,
     wireframes: false,
     background: '#eeeeee',
     hasBounds: true,

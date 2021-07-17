@@ -7,10 +7,10 @@ const bodies = [boxA, boxB, boxC];
 
 // world boundaries
 const initializeBounds = () => {
-  const ground = Bodies.rectangle(300, 1200, 1420, 680, { isStatic: true , render: {fillStyle: '#fff'}});
+  const ground = Bodies.rectangle(300, 1100, 1420, 680, { isStatic: true , render: {fillStyle: '#fff'}});
   const leftSide = Bodies.rectangle(-200, 400, 680, 1420, { isStatic: true , render: {fillStyle: '#fff'}});
   const ceiling = Bodies.rectangle(400, -200, 1420, 680, { isStatic: true , render: {fillStyle: '#fff'}});
-  const rightSide = Bodies.rectangle(1200, 400, 680, 1420, { isStatic: true , render: {fillStyle: '#fff'}});
+  const rightSide = Bodies.rectangle(1100, 400, 680, 1420, { isStatic: true , render: {fillStyle: '#fff'}});
 
   bodies.forEach((each) => {
     Body.setVelocity(each, {x: 0, y: -10});
@@ -21,4 +21,4 @@ const initializeBounds = () => {
 
 initializeBounds();
 
-const vector = Matter.Vector.create(500,500);
+const vector = Matter.Vector.create(450,450);
