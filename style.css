@@ -7,6 +7,24 @@
 .playground {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 100px;
+}
+
+.buttons button {
+  margin: 10px;
+  height: 60px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
 }
 
 #counter-table {
@@ -16,4 +34,18 @@
 
 #counter {
   margin-left: 10px;
+}
+
+#input {
+  width: 350px;
+  height: 50px;
+}
+
+.input {
+  display: flex;
+}
+
+label {
+  margin: 12px;
+  font-size: 20px;
 }

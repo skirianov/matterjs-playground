@@ -8,3 +8,12 @@ const setCounterState = (number) => {
   counterState = number;
   counter.innerText = counterState;
 }
+
+let spinState = 0;
+const changeState = () => {
+  if (spinState === 0) {
+    spinState = 1;
+  } else {
+    spinState = 0;
+  }
+}

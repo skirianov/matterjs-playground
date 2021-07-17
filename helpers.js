@@ -57,8 +57,8 @@ const createBody = (type) => {
       body = Bodies.trapezoid(
         Math.round(Math.random() * 450 + 200),
         Math.round(Math.random() * 450 + 200),
-        Math.round(Math.random() * 80 + 20),
-        Math.round(Math.random() * 80 + 20),
+        Math.round(Math.random() * 80 + 50),
+        Math.round(Math.random() * 80 + 50),
         Math.round(Math.random() * 3+1),
         {
           render: {
@@ -68,4 +68,12 @@ const createBody = (type) => {
       );
       return body;
   }
+}
+
+const clearWorld = () => {
+  Composite.clear(engine.world);
+  initializeBounds();
+  setInputState(0);
+  input.value = 0;
+  setCounterState(3);
 }
