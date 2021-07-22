@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Demo matter.js</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1 id="heading">Matter.js playground</h1>
+  <div class="playground">
+    <div id="container"></div>
+    <div class ="right">
+      <div id="counter-table">
+        <h3>Total shapes:</h3>
+        <h3 id="counter">3</h3>
+      </div>
+      <div class="input">
+        <input id="input" type="range" min="0" max="360" value="0">
+        <label for="input">Rotate</label>
+      </div>
+      <div class="buttons">
+        <button type="button" id="add">Add random shape</button>
+        <button type="button" id="rect" >Add rectangle</button>
+        <button type="button" id="circle" >Add cirlce</button>
+        <button type="button" id="polygon" >Add polygon</button>
+        <button type="button" id="triangle" >Add triangle</button>
+        <button type="button" id="infinite" disabled >Infinite SPIN</button>
+        <button type="button" id="clear" >Clear shapes</button>
+      </div>
+    </div>
+  </div>
+  <div class="canvas">
+    <canvas width="600" height="300" id="canvas">
+    </canvas>
+    <button id="end-shape">Complete</button>
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>
