@@ -1,8 +1,8 @@
 {
   "name": "physicsballs",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "My first encounter with Matter.js engine.",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,5 +10,19 @@
   "license": "ISC",
   "dependencies": {
     "matter-js": "^0.17.1"
-  }
+  },
+  "devDependencies": {
+    "eslint": "^7.31.0",
+    "webpack": "^5.46.0",
+    "webpack-cli": "^4.7.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skirianov/matterjs-playground.git"
+  },
+  "bugs": {
+    "url": "https://github.com/skirianov/matterjs-playground/issues"
+  },
+  "homepage": "https://github.com/skirianov/matterjs-playground#readme",
+  "keywords": []
 }
