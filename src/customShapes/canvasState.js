@@ -1,4 +1,4 @@
-let initialState = 'create';
+let initialState = 'create'; // initial state = create || edit
 
 const canvasState = {
   initialState,
@@ -7,7 +7,7 @@ const canvasState = {
   },
   setInitialState: (type) => {
     initialState = type;
-  }
+  },
 }
 
 export default canvasState;

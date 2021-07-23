@@ -53,7 +53,7 @@ triangleBtn.addEventListener("click", () => {
 
 addShapeBtn.addEventListener('click', () => {
   let compatibleVertices = canvasHelpers.vertices.map((each) => {
-    return {x: each.x, y: each.y};
+    return {x: each.x/2, y: each.y/2};
   });
   let body = Bodies.fromVertices(0, 0, compatibleVertices);
   Composite.add(engine.world, body);

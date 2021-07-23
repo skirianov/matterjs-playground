@@ -2,43 +2,41 @@ import helpers from "./canvasHelpers";
 import canvasState from "../canvasState";
 
 const { canvas, ctx, completeBtn, width, height } = helpers;
-let { vertices } = helpers;
 
 let lastVertice;
-
 canvas.addEventListener("mousedown", () => {
   if (canvasState.getInitialState() === "create") {
     let position = helpers.getCanvasMousePosition(canvas, event);
     let vertice = {
       x: position.x,
       y: position.y,
-      name: vertices.length,
+      name: helpers.vertices.length,
     };
 
     helpers.addPoint(vertice);
-    lastVertice = vertices[vertices.length - 1];
+    lastVertice = helpers.vertices[helpers.vertices.length - 1];
+    helpers.drawFromVertices(helpers.vertices);
   } else if (canvasState.getInitialState() === "edit") {
     let selected;
     canvas.onmousemove = () => {
       let position = helpers.getCanvasMousePosition(canvas, event);
 
-      vertices.forEach((each) => {
+      helpers.vertices.forEach((each) => {
         if (
-          position.x > each.x - 5 &&
-          position.x < each.x + 5 &&
-          position.y > each.y - 5 &&
-          position.y < each.y + 5
+          position.x > each.x - 30 &&
+          position.x < each.x + 30 &&
+          position.y > each.y - 30 &&
+          position.y < each.y + 30
         ) {
           selected = Object.assign({}, each);
         }
       });
-
       if (selected) {
         let newVertice = {
           ...helpers.getCanvasMousePosition(canvas, event),
           name: selected.name,
         };
-        let newVerticesArray = vertices.map((each) => {
+        let newVerticesArray = helpers.vertices.map((each) => {
           if (
             each.x === selected.x &&
             each.y === selected.y &&
@@ -48,19 +46,18 @@ canvas.addEventListener("mousedown", () => {
           }
           return each;
         });
-        vertices = [...newVerticesArray];
+        helpers.vertices = [...newVerticesArray];
+        helpers.drawFromVertices(helpers.vertices);
       }
     };
+    canvas.onmouseup = () => {
+      canvas.onmousemove = null;
+    }
   }
 });
 
-canvas.addEventListener('mouseup', () => {
-  helpers.drawFromVertices(vertices);
-  canvas.onmousemove = null;
-});
-
 completeBtn.addEventListener('click', () => {
-  helpers.drawFromVertices(vertices);
+  helpers.drawFromVertices(helpers.vertices);
   canvasState.setInitialState("edit");
 });
 

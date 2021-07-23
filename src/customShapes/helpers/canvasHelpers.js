@@ -1,3 +1,5 @@
+import canvasState from '../canvasState';
+
 const canvas = document.getElementById("canvas");
 canvas.height = 300;
 canvas.width = 600;
