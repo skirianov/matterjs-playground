@@ -59,7 +59,7 @@ canvas.addEventListener("mouseup", () => {
   canvas.onmousemove = null;
 });
 
-complete.addEventListener("click", () => {
+completeBtn.addEventListener("click", () => {
   helpers.drawFromVertices(vertices);
   canvasState.setInitialState("edit");
 });
