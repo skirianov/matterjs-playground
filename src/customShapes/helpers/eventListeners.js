@@ -1,7 +1,7 @@
 import helpers from "./canvasHelpers";
 import canvasState from "../canvasState";
 
-const { canvas, ctx, completeBtn, addShapeBtn, width, height } = helpers;
+const { canvas, ctx, completeBtn, width, height } = helpers;
 let { vertices } = helpers;
 
 let lastVertice;
@@ -54,12 +54,14 @@ canvas.addEventListener("mousedown", () => {
   }
 });
 
-canvas.addEventListener("mouseup", () => {
+canvas.addEventListener('mouseup', () => {
   helpers.drawFromVertices(vertices);
   canvas.onmousemove = null;
 });
 
-completeBtn.addEventListener("click", () => {
+completeBtn.addEventListener('click', () => {
   helpers.drawFromVertices(vertices);
   canvasState.setInitialState("edit");
 });
+
+
