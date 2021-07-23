@@ -5,7 +5,8 @@ const width = canvas.width;
 const height = canvas.height;
 const ctx = canvas.getContext('2d');
 
-const complete = document.getElementById('end-shape');
+const completeBtn = document.getElementById('end-shape');
+const addShapeBtn = document.getElementById('add-shape');
 
 let vertices = [];
 
@@ -60,7 +61,8 @@ const helpers = {
   width,
   height,
   ctx,
-  complete,
+  completeBtn,
+  addShapeBtn,
   vertices,
   drawLine,
   drawPoint,

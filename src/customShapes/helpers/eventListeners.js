@@ -1,7 +1,7 @@
 import helpers from "./canvasHelpers";
 import canvasState from "../canvasState";
 
-const { canvas, ctx, complete, width, height } = helpers;
+const { canvas, ctx, completeBtn, addShapeBtn, width, height } = helpers;
 let { vertices } = helpers;
 
 let lastVertice;
@@ -21,7 +21,7 @@ canvas.addEventListener("mousedown", () => {
     let selected;
     canvas.onmousemove = () => {
       let position = helpers.getCanvasMousePosition(canvas, event);
-      
+
       vertices.forEach((each) => {
         if (
           position.x > each.x - 5 &&
