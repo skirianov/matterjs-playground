@@ -1,7 +1,7 @@
 import { Bodies, Composite } from "matter-js";
 import { SHAPES, COLORS, WEIGHT } from "./constants";
 
-import state from "../../states";
+import state from '../states';
 import initialWorld from './initialize';
 import uiElements from './eventHandlers';
 
@@ -87,12 +87,14 @@ const clearWorld = () => {
   state.setInputState(0);
   uiElements.input.value = 0;
   state.setCounterState(3);
+  uiElements.counter.innerText = state.getCounterState();
 };
 
 const addSpecificBody = (type) => {
   let body = createBody(type);
   Composite.add(engine.world, body);
-  state.setCounterState(counterState + 1);
+  state.setCounterState(state.getCounterState() + 1);
+  uiElements.counter.innerText = state.getCounterState();
 };
 
 const helpers = {

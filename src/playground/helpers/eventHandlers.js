@@ -1,5 +1,5 @@
 import { Composite, Body,  } from 'matter-js';
-import state from '../../states';
+import state from '../states';
 import helpers from './helpers';
 import initialWorld from './initialize';
 
@@ -17,10 +17,9 @@ const clearBtn = document.getElementById('clear');
 
 (function eventListener() {
   input.addEventListener("input", () => {
-    let oldInputState = { ...state.inputState};
+    let oldInputState = state.getInputState();
     state.setInputState(input.value);
-    let difference = state.inputState - oldInputState;
-    console.log(difference);
+    let difference = state.getInputState() - oldInputState;
     Composite.rotate(engine.world, helpers.radiansToDeg(difference), vector);
     bodies.forEach((each) => {
       Body.setVelocity(each, helpers.randomWeight());
@@ -31,27 +30,24 @@ const clearBtn = document.getElementById('clear');
     let body = helpers.createBody(helpers.randomBody());
     bodies.push(body);
     Composite.add(engine.world, body);
-    state.setCounterState(state.counterState + 1);
+    state.setCounterState(state.getCounterState() + 1);
+    counter.innerText = state.getCounterState();
   });
 
   clearBtn.addEventListener('click', () => {
     helpers.clearWorld();
-  })
-  
-  addBtn.addEventListener('click', () => {
-    helpers.randomBody();
   });
   rectBtn.addEventListener('click', () => {
-    helpers.createBody('rect');
+    helpers.addSpecificBody('rect');
   });
   circleBtn.addEventListener('click', () => {
-    helpers.createBody('circle');
+    helpers.addSpecificBody('circle');
   });
   polyBtn.addEventListener('click', () => {
-    helpers.createBody('poly');
+    helpers.addSpecificBody('poly');
   });
   triangleBtn.addEventListener('click', () => {
-    helpers.createBody('triangle');
+    helpers.addSpecificBody('triangle');
   });
 })();
 
