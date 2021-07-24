@@ -1,5 +1,3 @@
-import listeners from './helpers/eventListeners';
+import listeners from './listeners/eventListeners';
 import helpers from './helpers/canvasHelpers';
 import canvasState from './canvasState';
-
-

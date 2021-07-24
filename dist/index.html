@@ -25,7 +25,14 @@
         <button type="button" id="circle" >Add cirlce</button>
         <button type="button" id="polygon" >Add polygon</button>
         <button type="button" id="triangle" >Add triangle</button>
-        <button type="button" id="infinite" disabled >Infinite SPIN</button>
+        <div class="infinite-container">
+          <button type="button" id="infinite" >Infinite SPIN</button>
+          <button type="button" id="stop-spin">Stop spin</button>
+          <div class="direction-container">
+            <label for="direction" id="direction-label">Right</label>
+            <input type="checkbox" id="direction">
+          </div>
+        </div>
         <button type="button" id="clear" >Clear shapes</button>
       </div>
     </div>

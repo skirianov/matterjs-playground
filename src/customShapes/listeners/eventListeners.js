@@ -1,4 +1,4 @@
-import helpers from "./canvasHelpers";
+import helpers from "../helpers/canvasHelpers";
 import canvasState from "../canvasState";
 
 const { canvas, ctx, completeBtn, width, height } = helpers;
@@ -7,6 +7,7 @@ let lastVertice;
 canvas.addEventListener("mousedown", () => {
   if (canvasState.getInitialState() === "create") {
     let position = helpers.getCanvasMousePosition(canvas, event);
+    
     let vertice = {
       x: position.x,
       y: position.y,
@@ -21,31 +22,12 @@ canvas.addEventListener("mousedown", () => {
     canvas.onmousemove = () => {
       let position = helpers.getCanvasMousePosition(canvas, event);
 
-      helpers.vertices.forEach((each) => {
-        if (
-          position.x > each.x - 30 &&
-          position.x < each.x + 30 &&
-          position.y > each.y - 30 &&
-          position.y < each.y + 30
-        ) {
-          selected = Object.assign({}, each);
-        }
-      });
+      selected = helpers.checkIfSelected(position, helpers.vertices);
       if (selected) {
-        let newVertice = {
-          ...helpers.getCanvasMousePosition(canvas, event),
-          name: selected.name,
-        };
-        let newVerticesArray = helpers.vertices.map((each) => {
-          if (
-            each.x === selected.x &&
-            each.y === selected.y &&
-            each.name === selected.name
-          ) {
-            return newVertice;
-          }
-          return each;
-        });
+        // if point is selected, create a new vertices array and redraw
+        let newVertice = helpers.verticeFromMousePosition(selected);
+        let newVerticesArray = helpers.newArrayWithNewVertice(selected, newVertice, helpers.vertices);
+
         helpers.vertices = [...newVerticesArray];
         helpers.drawFromVertices(helpers.vertices);
       }

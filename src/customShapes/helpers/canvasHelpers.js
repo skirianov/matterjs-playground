@@ -57,6 +57,48 @@ const drawFromVertices = (vertices) => {
   ctx.fill();
 }
 
+const checkIfSelected = (position, vertices) => {
+  let selected
+  vertices.forEach((each) => {
+    if (
+      position.x > each.x - 30 &&
+      position.x < each.x + 30 &&
+      position.y > each.y - 30 &&
+      position.y < each.y + 30
+    ) {
+      selected = Object.assign({}, each);
+    }
+  });
+
+  return selected;
+}
+
+const verticeFromMousePosition = (selected) => {
+  return {
+    ...helpers.getCanvasMousePosition(canvas, event),
+    name: selected.name,
+  };
+}
+
+const newArrayWithNewVertice = (selected, newVertice) => {
+  const newVerticesArray = helpers.vertices.map((each) => {
+    if (
+      each.x === selected.x &&
+      each.y === selected.y &&
+      each.name === selected.name
+    ) {
+      return newVertice;
+    }
+    return each;
+  });
+
+  return newVerticesArray;
+}
+
+const clearCanvas = () => {
+  ctx.clearRect(0, 0, width, height);
+}
+
 const helpers = {
   canvas,
   width,
@@ -70,6 +112,10 @@ const helpers = {
   increasePoint,
   drawFromVertices,
   getCanvasMousePosition,
+  checkIfSelected,
+  verticeFromMousePosition,
+  newArrayWithNewVertice,
+  clearCanvas,
 }
 
 export default helpers;

@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "matter-js": "^0.17.1"
+    "matter-js": "^0.17.1",
+    "poly-decomp": "^0.3.0"
   },
   "devDependencies": {
     "eslint": "^7.31.0",

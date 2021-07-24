@@ -5,7 +5,7 @@ import state from '../states';
 import initialWorld from './initialize';
 import uiElements from './eventHandlers';
 
-const { engine, initializeBounds } = initialWorld;
+const { engine, vector, initializeBounds } = initialWorld;
 
 const radiansToDeg = (radians) => {
   return (radians / 3284) * (180 / Math.PI);
@@ -97,6 +97,19 @@ const addSpecificBody = (type) => {
   uiElements.counter.innerText = state.getCounterState();
 };
 
+const infiniteSpin = () => {
+  let direction;
+  if (state.getSpinDitection() === 'right') {
+    direction = 0.1;
+  } else {
+    direction = -0.1;
+  }
+
+  return setInterval(() => {
+    Composite.rotate(engine.world, direction, vector);
+  }, 20);
+}
+
 const helpers = {
   radiansToDeg,
   randomBody,
@@ -105,6 +118,7 @@ const helpers = {
   createBody,
   clearWorld,
   addSpecificBody,
+  infiniteSpin,
 }
 
 export default helpers;

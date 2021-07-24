@@ -6,15 +6,20 @@ import canvasHelpers from '../../customShapes/helpers/canvasHelpers';
 
 const { engine, vector, bodies } = initialWorld;
 
+let spin;
+
 const input = document.getElementById("input");
 const btn = document.getElementById("add");
 const counter = document.getElementById("counter");
-const addBtn = document.getElementById("add");
 const addShapeBtn = document.getElementById("add-shape");
 const rectBtn = document.getElementById("rect");
 const circleBtn = document.getElementById("circle");
 const polyBtn = document.getElementById("polygon");
 const triangleBtn = document.getElementById("triangle");
+const infinite = document.getElementById('infinite');
+const stopSpin = document.getElementById('stop-spin');
+const directionToggle = document.getElementById('direction');
+const directionLabel = document.getElementById('direction-label');
 const clearBtn = document.getElementById("clear");
 
 input.addEventListener("input", () => {
@@ -51,12 +56,34 @@ triangleBtn.addEventListener("click", () => {
   helpers.addSpecificBody("triangle");
 });
 
+infinite.addEventListener('click', () => {
+  state.setSpinState(helpers.infiniteSpin());
+});
+
+stopSpin.addEventListener('click', () => {
+  clearInterval(state.getSpinState());
+});
+
+directionToggle.addEventListener('change', () => {
+  if (state.getSpinDitection() === 'right') {
+    state.setSpinDirection('left');
+    directionLabel.innerText = 'Left';
+  } else {
+    state.setSpinDirection('right');
+    directionLabel.innerText = 'Right';
+  }
+
+  clearInterval(state.getSpinState());
+  state.setSpinState(helpers.infiniteSpin());
+})
+
 addShapeBtn.addEventListener('click', () => {
   let compatibleVertices = canvasHelpers.vertices.map((each) => {
     return {x: each.x/2, y: each.y/2};
   });
   let body = Bodies.fromVertices(0, 0, compatibleVertices);
   Composite.add(engine.world, body);
+  canvasHelpers.clearCanvas();
 })
 
 const uiElements = {
