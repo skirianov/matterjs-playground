@@ -1,3 +1,13 @@
+
+* {
+  outline: solid red 1px;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: rgb(255, 254, 248);
+}
+
 #heading {
   text-align: center;
   margin-top: 10px;
@@ -10,21 +20,36 @@
   justify-content: space-evenly;
 }
 
-.buttons {
+.controls {
   display: flex;
   flex-direction: column;
-  width: 240px;
-  margin: 60px;
+  justify-content: center;
+  width: 30%;
 }
 
-.buttons button {
+#buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
   margin: 10px;
-  height: 60px;
+  height: 5rem;
+  width: 8rem;
+  color: white;
 }
 
-.right {
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.readings {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 #counter-table {
@@ -36,12 +61,14 @@
   margin-left: 10px;
 }
 
-#input {
-  width: 350px;
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.input {
-  display: flex;
+#input {
+  width: 300px;
 }
 
 label {
@@ -49,12 +76,32 @@ label {
   font-size: 20px;
 }
 
+.infinite-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 #canvas {
   background-color: #f1f1f1;
   border: 1px solid black;
 }
 
-.canvas-container {
+#canvas-container {
+  display: none;
+  justify-content: center;
+  background-color: bisque;
+  width: 60%;
+  margin: auto;
+} 
+
+#canvas-btns {
   display: flex;
   justify-content: center;
+}
+
+#canvas-btns button {
+  margin: 10px;
+  height: 50px;
+  width: 100px;
 }

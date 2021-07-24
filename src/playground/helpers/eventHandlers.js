@@ -6,8 +6,6 @@ import canvasHelpers from '../../customShapes/helpers/canvasHelpers';
 
 const { engine, vector, bodies } = initialWorld;
 
-let spin;
-
 const input = document.getElementById("input");
 const btn = document.getElementById("add");
 const counter = document.getElementById("counter");
@@ -16,6 +14,7 @@ const rectBtn = document.getElementById("rect");
 const circleBtn = document.getElementById("circle");
 const polyBtn = document.getElementById("polygon");
 const triangleBtn = document.getElementById("triangle");
+const customShapeBtn = document.getElementById('custom');
 const infinite = document.getElementById('infinite');
 const stopSpin = document.getElementById('stop-spin');
 const directionToggle = document.getElementById('direction');
@@ -55,13 +54,20 @@ polyBtn.addEventListener("click", () => {
 triangleBtn.addEventListener("click", () => {
   helpers.addSpecificBody("triangle");
 });
+customShapeBtn.addEventListener('click', () =>{
+  let customContainer = document.getElementById('canvas-container');
+
+  customContainer.style.display = 'flex';
+})
 
 infinite.addEventListener('click', () => {
   state.setSpinState(helpers.infiniteSpin());
+  infinite.setAttribute('disabled', true);
 });
 
 stopSpin.addEventListener('click', () => {
   clearInterval(state.getSpinState());
+  infinite.removeAttribute('disabled');
 });
 
 directionToggle.addEventListener('change', () => {

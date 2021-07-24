@@ -4,46 +4,54 @@
 <head>
   <title>Demo matter.js</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./css/bootstrap-grid.min.css">
 </head>
 
 <body>
   <h1 id="heading">Matter.js playground</h1>
   <div class="playground">
     <div id="container"></div>
-    <div class ="right">
-      <div id="counter-table">
-        <h3>Total shapes:</h3>
-        <h3 id="counter">3</h3>
-      </div>
-      <div class="input">
-        <input id="input" type="range" min="0" max="360" value="0">
-        <label for="input">Rotate</label>
-      </div>
-      <div class="buttons">
-        <button type="button" id="add">Add random shape</button>
-        <button type="button" id="rect" >Add rectangle</button>
-        <button type="button" id="circle" >Add cirlce</button>
-        <button type="button" id="polygon" >Add polygon</button>
-        <button type="button" id="triangle" >Add triangle</button>
-        <div class="infinite-container">
-          <button type="button" id="infinite" >Infinite SPIN</button>
-          <button type="button" id="stop-spin">Stop spin</button>
-          <div class="direction-container">
-            <label for="direction" id="direction-label">Right</label>
-            <input type="checkbox" id="direction">
-          </div>
+    <div class ="controls">
+      <div class="readings">
+        <div id="counter-table">
+          <h3>Total shapes:</h3>
+          <h3 id="counter">3</h3>
         </div>
-        <button type="button" id="clear" >Clear shapes</button>
+        <div class="input-container">
+          <input id="input" class="form-range" type="range" min="0" max="360" value="0">
+          <label for="input">Rotate</label>
+        </div>
+      </div>
+      <div id="buttons">
+        <button type="button" id="add" class="btn btn-primary">Add random shape</button>
+        <button type="button" id="rect" class="btn btn-primary" >Add rectangle</button>
+        <button type="button" id="circle" class="btn btn-primary">Add cirlce</button>
+        <button type="button" id="polygon" class="btn btn-primary">Add polygon</button>
+        <button type="button" id="triangle" class="btn btn-primary">Add triangle</button>
+        <button type="button" id="custom" class="btn btn-info">Custom shape</button>
+        
+        <button type="button" id="clear" class="btn btn-danger">Clear shapes</button>
+      </div>
+      <div class="infinite-container">
+        <button type="button" id="infinite" class="btn btn-primary">Infinite SPIN</button>
+        <button type="button" id="stop-spin" class="btn btn-primary">Stop spin</button>
+        <div class="direction-container">
+          <label for="direction" id="direction-label">Right</label>
+          <input type="checkbox" id="direction">
+        </div>
       </div>
     </div>
   </div>
-  <div class="canvas-container">
+  <div id="canvas-container">
     <canvas id="canvas">
     </canvas>
-    <button id="end-shape">Complete</button>
-    <button id="add-shape">Add to world</button>
+    <div id="canvas-btns">
+      <button id="end-shape" >Complete</button>
+      <button id="add-shape">Add to world</button>
+    </div>
   </div>
   <script src="main.js"></script>
+  <script src="./js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
