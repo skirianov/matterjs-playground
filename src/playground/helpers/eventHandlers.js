@@ -3,13 +3,14 @@ import state from "../states";
 import helpers from "./helpers";
 import initialWorld from "./initialize";
 import canvasHelpers from '../../customShapes/helpers/canvasHelpers';
+import canvasState from '../../customShapes/canvasState';
 
 const { engine, vector, bodies } = initialWorld;
 
 const input = document.getElementById("input");
 const btn = document.getElementById("add");
 const counter = document.getElementById("counter");
-const addShapeBtn = document.getElementById("add-shape");
+const addCustomShapeBtn = document.getElementById("add-shape");
 const rectBtn = document.getElementById("rect");
 const circleBtn = document.getElementById("circle");
 const polyBtn = document.getElementById("polygon");
@@ -101,13 +102,15 @@ settings.addEventListener('click', () => {
   container.style.height = '200px';
 })
 
-addShapeBtn.addEventListener('click', () => {
-  let compatibleVertices = canvasHelpers.vertices.map((each) => {
+addCustomShapeBtn.addEventListener('click', () => {
+  let compatibleVertices = canvasState.getVertices().map((each) => {
     return {x: each.x/2, y: each.y/2};
   });
   let body = Bodies.fromVertices(0, 0, compatibleVertices);
   Composite.add(engine.world, body);
   canvasHelpers.clearCanvas();
+  document.getElementById('collapse-custom').className = 'accordion-collapse collapse';
+  canvasState.setVertices([]);
 })
 
 const uiElements = {

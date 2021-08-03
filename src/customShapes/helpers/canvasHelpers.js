@@ -9,8 +9,6 @@ const ctx = canvas.getContext('2d');
 
 const completeBtn = document.getElementById('end-shape');
 
-let vertices = [];
-
 const drawPoint = (vertice, height = 8, width = 8) => {
   ctx.fillStyle = '#4f4f4f'
   ctx.fillRect(vertice.x-4, vertice.y-4 , height, width);
@@ -18,7 +16,10 @@ const drawPoint = (vertice, height = 8, width = 8) => {
 
 const addPoint = (vertice) => {
   drawPoint(vertice);
-  vertices.push(vertice);
+  let newVertices = canvasState.getVertices();
+  newVertices.push(vertice);
+  console.log(newVertices);
+  canvasState.setVertices(newVertices);
 };
 
 const increasePoint = (vertice) => {
@@ -44,9 +45,9 @@ const drawFromVertices = (vertices) => {
   ctx.clearRect(0, 0, width, height);
   ctx.beginPath();
   ctx.moveTo(vertices[0].x, vertices[0].y);
-  helpers.drawPoint(vertices[0]);
+  drawPoint(vertices[0]);
   for (let i = 1; i < vertices.length; i++) {
-    helpers.drawPoint(vertices[i]);
+    drawPoint(vertices[i]);
     ctx.lineTo(vertices[i].x, vertices[i].y);
     ctx.stroke();
   }
@@ -75,13 +76,13 @@ const checkIfSelected = (position, vertices) => {
 
 const verticeFromMousePosition = (selected) => {
   return {
-    ...helpers.getCanvasMousePosition(canvas, event),
+    ...getCanvasMousePosition(canvas, event),
     name: selected.name,
   };
 }
 
-const newArrayWithNewVertice = (selected, newVertice) => {
-  const newVerticesArray = helpers.vertices.map((each) => {
+const newArrayWithNewVertice = (selected, newVertice, vertices) => {
+  const newVerticesArray = vertices.map((each) => {
     if (
       each.x === selected.x &&
       each.y === selected.y &&
@@ -97,6 +98,8 @@ const newArrayWithNewVertice = (selected, newVertice) => {
 
 const clearCanvas = () => {
   ctx.clearRect(0, 0, width, height);
+  canvasState.setInitialState("create");
+  canvasState.setVertices([]);
 }
 
 const helpers = {
@@ -105,7 +108,6 @@ const helpers = {
   height,
   ctx,
   completeBtn,
-  vertices,
   drawLine,
   drawPoint,
   addPoint,

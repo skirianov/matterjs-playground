@@ -31,7 +31,25 @@
         <button type="button" id="circle" class="btn btn-primary">Add cirlce</button>
         <button type="button" id="polygon" class="btn btn-primary">Add polygon</button>
         <button type="button" id="triangle" class="btn btn-primary">Add triangle</button>
-        <button type="button" id="custom" class="btn btn-info">Custom shape</button>
+        <button type="button" id="custom" class="btn btn-info" data-bs-toggle="collapse"
+        data-bs-target="#collapse-custom">Custom shape</button>
+        <div class="accordion" id="accordion-custom-shape">
+          <div class="accordion-item">
+            <div id="collapse-custom" class="accordion-collapse collapse" aria-labelledby="headingOne"
+              data-bs-parent="#accordion-custom-shape">
+              <div class="accordion-body">
+                <div id="canvas-container">
+                  <canvas id="canvas">
+                  </canvas>
+                  <div id="canvas-btns">
+                    <button id="end-shape" class="btn btn-info">Complete</button>
+                    <button id="add-shape" class="btn btn-info">Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <button type="button" id="clear" class="btn btn-danger">Reset</button>
       </div>
@@ -60,14 +78,7 @@
         </div>
       </div>
     </div>
-    <div id="canvas-container">
-      <canvas id="canvas">
-      </canvas>
-      <div id="canvas-btns">
-        <button id="end-shape">Complete</button>
-        <button id="add-shape">Add to world</button>
-      </div>
-    </div>
+    
     <script src="main.js"></script>
 </body>
 

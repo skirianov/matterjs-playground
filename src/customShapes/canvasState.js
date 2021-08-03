@@ -1,5 +1,5 @@
 let initialState = 'create'; // initial state = create || edit
-let spinState = 'none';
+let vertices = [];
 
 const canvasState = {
   initialState,
@@ -9,6 +9,13 @@ const canvasState = {
   setInitialState: (type) => {
     initialState = type;
   },
+  vertices,
+  getVertices: () => {
+    return vertices;
+  },
+  setVertices: (array) => {
+    vertices = array;
+  }
 }
 
 export default canvasState;

@@ -4,6 +4,7 @@ import canvasState from "../canvasState";
 const { canvas, ctx, completeBtn, width, height } = helpers;
 
 let lastVertice;
+
 canvas.addEventListener("mousedown", () => {
   if (canvasState.getInitialState() === "create") {
     let position = helpers.getCanvasMousePosition(canvas, event);
@@ -11,36 +12,42 @@ canvas.addEventListener("mousedown", () => {
     let vertice = {
       x: position.x,
       y: position.y,
-      name: helpers.vertices.length,
+      name: canvasState.getVertices().length,
     };
 
     helpers.addPoint(vertice);
-    lastVertice = helpers.vertices[helpers.vertices.length - 1];
-    helpers.drawFromVertices(helpers.vertices);
+
+    let localVertices = canvasState.getVertices();
+
+    lastVertice = localVertices[localVertices.length - 1];
+    console.log(localVertices);
+    helpers.drawFromVertices(localVertices);
   } else if (canvasState.getInitialState() === "edit") {
     let selected;
     canvas.onmousemove = () => {
       let position = helpers.getCanvasMousePosition(canvas, event);
 
-      selected = helpers.checkIfSelected(position, helpers.vertices);
+      selected = helpers.checkIfSelected(position, canvasState.getVertices());
       if (selected) {
         // if point is selected, create a new vertices array and redraw
         let newVertice = helpers.verticeFromMousePosition(selected);
-        let newVerticesArray = helpers.newArrayWithNewVertice(selected, newVertice, helpers.vertices);
+        let newVerticesArray = helpers.newArrayWithNewVertice(selected, newVertice, canvasState.getVertices());
 
-        helpers.vertices = [...newVerticesArray];
-        helpers.drawFromVertices(helpers.vertices);
+        canvasState.setVertices([...newVerticesArray]);
+        helpers.drawFromVertices(canvasState.getVertices());
       }
     };
     canvas.onmouseup = () => {
       canvas.onmousemove = null;
+      canvas.onmousedown = null;
     }
   }
 });
 
 completeBtn.addEventListener('click', () => {
-  helpers.drawFromVertices(helpers.vertices);
+  helpers.drawFromVertices(canvasState.getVertices());
   canvasState.setInitialState("edit");
 });
+
 
 

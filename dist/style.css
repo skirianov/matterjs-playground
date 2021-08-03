@@ -109,16 +109,15 @@ label {
 }
 
 #canvas-container {
-  display: none;
+  display: flex;
   justify-content: center;
-  background-color: bisque;
-  width: 60%;
-  margin: auto;
+  flex-direction: column;
 } 
 
 #canvas-btns {
   display: flex;
   justify-content: center;
+  color: 'white'
 }
 
 #canvas-btns button {
