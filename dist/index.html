@@ -5,13 +5,15 @@
   <title>Demo matter.js</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="./css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
+  <script defer src="../node_modules/@fortawesome/fontawesome-free/js/solid.js"></script>
 </head>
 
 <body>
   <h1 id="heading">Matter.js playground</h1>
   <div class="playground">
     <div id="container"></div>
-    <div class ="controls">
+    <div class="controls">
       <div class="readings">
         <div id="counter-table">
           <h3>Total shapes:</h3>
@@ -19,39 +21,54 @@
         </div>
         <div class="input-container">
           <input id="input" class="form-range" type="range" min="0" max="360" value="0">
-          <label for="input">Rotate</label>
+          <label for="input" class="text-secondary">Rotate</label>
         </div>
+        <p id="warning" style="color: transparent">More than 60 shapes may cause perfomance issues</p>
       </div>
       <div id="buttons">
         <button type="button" id="add" class="btn btn-primary">Add random shape</button>
-        <button type="button" id="rect" class="btn btn-primary" >Add rectangle</button>
+        <button type="button" id="rect" class="btn btn-primary">Add rectangle</button>
         <button type="button" id="circle" class="btn btn-primary">Add cirlce</button>
         <button type="button" id="polygon" class="btn btn-primary">Add polygon</button>
         <button type="button" id="triangle" class="btn btn-primary">Add triangle</button>
         <button type="button" id="custom" class="btn btn-info">Custom shape</button>
-        
-        <button type="button" id="clear" class="btn btn-danger">Clear shapes</button>
+
+        <button type="button" id="clear" class="btn btn-danger">Reset</button>
       </div>
-      <div class="infinite-container">
-        <button type="button" id="infinite" class="btn btn-primary">Infinite SPIN</button>
-        <button type="button" id="stop-spin" class="btn btn-primary">Stop spin</button>
-        <div class="direction-container">
-          <label for="direction" id="direction-label">Right</label>
-          <input type="checkbox" id="direction">
+      <div class="infinite-controls-container">
+        <div class="infinite-container">
+          <button type="button" id="infinite" class="btn btn-primary">Infinite SPIN</button>
+          <button type="button" id="stop-spin" class="btn btn-primary">Stop spin</button>
+          <button type="button" id="direction-settings" class="btn btn-light" data-bs-toggle="collapse"
+            data-bs-target="#collapseOne">
+            <i class="fas fa-cog" style="font-size: 40px;"></i>
+          </button>
+        </div>
+        <div class="accordion" id="accordion-direction-settings">
+          <div class="accordion-item">
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+              data-bs-parent="#accordion-direction-settings">
+              <div class="accordion-body">
+                <div class="direction-container">
+                  <label for="direction" id="direction-label-right">Right</label>
+                  <input type="range" min="0" max="1" id="direction" value="0" class="form-range">
+                  <label for="direction" id="direction-label-left">Left</label>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div id="canvas-container">
-    <canvas id="canvas">
-    </canvas>
-    <div id="canvas-btns">
-      <button id="end-shape" >Complete</button>
-      <button id="add-shape">Add to world</button>
+    <div id="canvas-container">
+      <canvas id="canvas">
+      </canvas>
+      <div id="canvas-btns">
+        <button id="end-shape">Complete</button>
+        <button id="add-shape">Add to world</button>
+      </div>
     </div>
-  </div>
-  <script src="main.js"></script>
-  <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>

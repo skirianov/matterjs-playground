@@ -6,8 +6,8 @@ const render = Render.create({
   element: document.getElementById('container'),
   engine: engine,
   options: {
-    height: 900,
-    width: 900,
+    height: 800,
+    width: 800,
     wireframes: false,
     background: '#eeeeee',
     hasBounds: true,
@@ -15,7 +15,7 @@ const render = Render.create({
 });
 
 const runner = Runner.create();
-const vector = Vector.create(450,450);
+const vector = Vector.create(400,400);
 
 
 let boxA = Bodies.rectangle(400, 600, 50, 50, { render: { fillStyle: '#c32323' } });
@@ -26,10 +26,10 @@ let boxC = Bodies.circle(500, 600, 30, 100);
 const bodies = [boxA, boxB, boxC];  
 
 const initializeBounds = () => {
-  const ground = Bodies.rectangle(300, 1100, 1420, 680, { isStatic: true , render: {fillStyle: '#fff'}});
-  const leftSide = Bodies.rectangle(-200, 400, 680, 1420, { isStatic: true , render: {fillStyle: '#fff'}});
-  const ceiling = Bodies.rectangle(400, -200, 1420, 680, { isStatic: true , render: {fillStyle: '#fff'}});
-  const rightSide = Bodies.rectangle(1100, 400, 680, 1420, { isStatic: true , render: {fillStyle: '#fff'}});
+  const ground = Bodies.rectangle(300, 1000, 1220, 600, { isStatic: true , render: {fillStyle: '#fff'}});
+  const leftSide = Bodies.rectangle(-200, 400, 600, 1220, { isStatic: true , render: {fillStyle: '#fff'}});
+  const ceiling = Bodies.rectangle(400, -200, 1220, 600, { isStatic: true , render: {fillStyle: '#fff'}});
+  const rightSide = Bodies.rectangle(1000, 400, 600, 1220, { isStatic: true , render: {fillStyle: '#fff'}});
 
   bodies.forEach((each) => {
     Body.setVelocity(each, {x: 0, y: -10});

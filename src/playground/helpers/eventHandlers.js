@@ -32,6 +32,13 @@ input.addEventListener("input", () => {
 });
 
 btn.addEventListener("click", () => {
+  const WARNING = 60;
+  let current = state.getCounterState();
+
+  if (current === WARNING) {
+    document.getElementById('warning').style.color = 'red';
+  } 
+
   let body = helpers.createBody(helpers.randomBody());
   bodies.push(body);
   Composite.add(engine.world, body);
@@ -63,24 +70,35 @@ customShapeBtn.addEventListener('click', () =>{
 infinite.addEventListener('click', () => {
   state.setSpinState(helpers.infiniteSpin());
   infinite.setAttribute('disabled', true);
+  input.setAttribute('disabled', true);
 });
 
 stopSpin.addEventListener('click', () => {
   clearInterval(state.getSpinState());
   infinite.removeAttribute('disabled');
+  input.removeAttribute('disabled');
 });
 
-directionToggle.addEventListener('change', () => {
+directionToggle.addEventListener('click', () => {
   if (state.getSpinDitection() === 'right') {
     state.setSpinDirection('left');
-    directionLabel.innerText = 'Left';
+    directionToggle.value = 1;
   } else {
     state.setSpinDirection('right');
-    directionLabel.innerText = 'Right';
+    directionToggle.value = 0;
   }
 
+  infinite.setAttribute('disabled', true);
   clearInterval(state.getSpinState());
   state.setSpinState(helpers.infiniteSpin());
+})
+
+const settings = document.getElementById('direction-settings');
+
+settings.addEventListener('click', () => {
+  const container = document.getElementsByClassName('infinite-controls-container')[0];
+
+  container.style.height = '200px';
 })
 
 addShapeBtn.addEventListener('click', () => {
@@ -96,6 +114,8 @@ const uiElements = {
   input,
   btn,
   counter,
+  directionToggle,
+  infinite,
 };
 
 export default uiElements;

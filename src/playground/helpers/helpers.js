@@ -88,6 +88,13 @@ const clearWorld = () => {
   uiElements.input.value = 0;
   state.setCounterState(3);
   uiElements.counter.innerText = state.getCounterState();
+  uiElements.directionToggle.value = 0;
+  uiElements.infinite.removeAttribute('disabled');
+  uiElements.input.removeAttribute('disabled');
+  state.setSpinDirection('right');
+  document.getElementById('warning').style.color = "transparent";
+  clearInterval(state.getSpinState());
+
 };
 
 const addSpecificBody = (type) => {

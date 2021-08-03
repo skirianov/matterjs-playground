@@ -1,11 +1,7 @@
 
 * {
-  outline: solid red 1px;
+  /* outline: solid red 1px; */
   font-family: sans-serif;
-}
-
-body {
-  background-color: rgb(255, 254, 248);
 }
 
 #heading {
@@ -23,8 +19,9 @@ body {
 .controls {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 30%;
+  height: 700px;
+  margin-top: 60px;
 }
 
 #buttons {
@@ -44,6 +41,30 @@ body {
 .btn:focus {
   outline: none;
   box-shadow: none;
+}
+
+#direction-settings {
+  width: 4rem;
+}
+
+#direction {
+  appearance: none;
+  width: 3rem;
+  background-color: #f9f9f9;
+  padding-top: 10px;
+}
+
+.direction-container {
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 10px;
+}
+
+#direction-label-right {
+  margin-left: 20px;
+}
+
+.accordion-item {
+  border: none !important;
 }
 
 .readings {
